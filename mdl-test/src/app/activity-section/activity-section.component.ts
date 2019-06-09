@@ -27,8 +27,7 @@ export class ActivitySectionComponent implements OnInit {
     this.getInitialRecords();
   }
 
-  private openModalWithComponent() {
-    
+  private openAddRecordPopup() {    
     this.bsModalRef = this.modalService.show(AddRecordPopupComponent, {});
     this.bsModalRef.content.closeBtnName = 'Close';
   }
@@ -58,30 +57,25 @@ export class ActivitySectionComponent implements OnInit {
   }
 
   private updateCheckedOptions(id: string, index:number, event){
-    
     if(event.target.checked){
       this.checkBoxSelected[index] = id; 
     }else{
       this.checkBoxSelected.splice(index, 1);
     }
-    console.log(this.checkBoxSelected.length+" llllllllllll");
   }
 
   private deleteRecord():void{
-    console.log("Delete "+this.checkBoxSelected);
-
-    for (let i of this.checkBoxSelected) {
-      console.log(i); 
-      if(i){
-        let index = this.fetchRecordService.getItemIndex(i);
+    for (let id of this.checkBoxSelected) {      
+      if(id){
+        let index = this.fetchRecordService.getItemIndex(id);
         this.fetchRecordService.deleteRecord(index);
-      }
-      
-   }
-   this.checkBoxSelected = [];
+      }      
+    }
+    this.checkBoxSelected = [];
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+  
 }
