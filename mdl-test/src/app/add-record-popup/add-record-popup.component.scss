@@ -1,0 +1,20 @@
+.modalContainer{
+  .modal-body{
+
+    .form-group{
+      .invalid{
+        background-color: #ffeeec;
+      }
+      
+      .invalid-feedback{
+        display: block;
+      }
+    }
+    .btnGroup{
+      .btn{
+        width: 100px;
+      }
+    }
+  }
+  
+}

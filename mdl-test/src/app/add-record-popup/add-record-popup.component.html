@@ -1,0 +1,66 @@
+<div class="modalContainer">
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">{{title}}</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="container">
+			<form [formGroup]="form" (ngSubmit)="submit()">
+				<div class="row">
+					<div class="col-4">Column Name</div>
+					<div class="col-8">
+						<div class="form-group">
+							<input type="text" class="form-control" formControlName="columnName" [ngClass]="{'invalid': submitted && formControlEements.columnName.errors}" placeholder="columnname" aria-label="columnname">
+							<div *ngIf="submitted && formControlEements.columnName.errors" class="invalid-feedback">
+								<div *ngIf="formControlEements.columnName.errors.required">Column Name is required</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4">Column Type</div>
+					<div class="col-8">
+						<div class="form-group">
+							<select formControlName="columnType" id="columnType" [ngClass]="{'invalid': submitted && formControlEements.columnType.errors}">
+								<option *ngFor="let type of columnTypes; let i = index" [value]="columnTypes[i].id">
+									{{columnTypes[i].type}}
+								</option>
+							</select>
+							<div *ngIf="submitted && formControlEements.columnType.errors" class="invalid-feedback">
+								<div *ngIf="formControlEements.columnType.errors.required">Column Type is required</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4">Editable</div>
+					<div class="col-8">
+						<div class="form-group">
+							<select formControlName="editable" id="editable"  [ngClass]="{'invalid': submitted && formControlEements.editable.errors}">
+								<option *ngFor="let isEditable of editables; let i = index" [value]="editables[i].id">
+									{{editables[i].isEditable}}
+								</option>
+							</select>
+							<div *ngIf="submitted && formControlEements.editable.errors" class="invalid-feedback">
+								<div *ngIf="formControlEements.editable.errors.required">Editable is required</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row btnGroup">
+					<div class="col text-center">
+						<button type="submit" class="btn btn-primary mr-4">Save</button>		
+						<button type="button" class="btn btn-secondary" (click)="cancelRecord()">Cancel</button>			
+					</div>
+				</div>
+			</form>
+		</div>		
+
+	</div>	
+</div>
+  

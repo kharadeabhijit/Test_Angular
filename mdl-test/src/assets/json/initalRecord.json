@@ -1,0 +1,14 @@
+{
+    "data":[
+       {
+            "columnName":"Column 1",
+            "columnType":"String",
+            "editable":"True"
+       },
+       {
+            "columnName":"Column 2",
+            "columnType":"Number",
+            "editable":"True"
+        }
+    ]
+ }

@@ -1,0 +1,22 @@
+.navbar-light{
+    border-bottom: 1px solid #e0e0e0;
+
+    .navbar-brand{
+        .tagLine{
+            vertical-align: bottom;
+            margin-left: 15px;
+        }
+    }   
+}
+
+.navbar-dark{
+    .navbar-nav{
+        margin: 0 auto;
+
+        .nav-item{
+            margin-right: 20px;
+        }
+    }
+}
+
+

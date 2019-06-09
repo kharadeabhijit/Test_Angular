@@ -1,0 +1,73 @@
+<main role="main" class="flex-shrink-0 mainContent">
+    <div class="container">
+      <h1 class="mt-5">Column Master</h1>
+
+      <div class="btnGroup">
+          <button type="button" class="btn btn-primary" (click)="openModalWithComponent()">
+              <span class="sprite addIcon"></span> Add Column
+            </button>
+            <button type="button" class="btn btn-primary" (click)="deleteRecord()">
+              <span class="sprite deleteIcon"></span> Delete Column
+              </button>
+              
+      </div>
+
+      <div *ngIf="initalRecords">
+          <div class="card">
+              <h5 class="card-header">Column Master</h5>
+              <div class="card-body">
+                  <table class="table table-striped table-bordered">
+                      <thead>
+                        <tr>            
+                          <th></th>
+                          <th scope="col">Column Name</th>
+                          <th scope="col">Column Type</th>
+                          <th scope="col">Editable</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let record of initalRecords.data; let i=index">
+                          <td><input type="checkbox" (change)="updateCheckedOptions(record.id, i, $event)" aria-label="Checkbox for following text input"></td>            
+                          <td>{{record.columnName}}</td>
+                          <td>{{record.columnType}}</td>
+                          <td>{{record.editable}}</td>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+          <div class="card mt-5">
+            <h5 class="card-header">Result Datagrid</h5>
+            <div class="card-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                      <tr>            
+                        <th></th>
+                        <th scope="col" *ngFor="let record of initalRecords.data">{{record.columnName}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="checkbox" aria-label="Checkbox for following text input"></td>            
+                        <td *ngFor="let record of initalRecords.data">
+                          <input *ngIf="record.columnType!=='Boolean'" type="{{getInputType(record.columnType)}}" [disabled]="record.editable==='False'" class="form-control" aria-label="Checkbox for following text input">
+                          <select *ngIf="record.columnType==='Boolean'" [disabled]="record.editable==='False'" class="form-control">
+                            <option [ngValue]="True">True</option>
+                            <option [ngValue]="False">False</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+          
+      </div>
+      
+
+      <div class="alert alert-danger" role="alert" *ngIf="error">{{error}}</div>      
+
+    </div>
+  </main>

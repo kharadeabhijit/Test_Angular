@@ -1,0 +1,33 @@
+.mainContent{
+    margin-bottom: 30px;
+    .container{
+        .btnGroup{
+            margin: 30px 0px;
+    
+            .btn{
+                margin-right: 20px;
+        
+                .sprite {
+                    vertical-align: middle;
+                    background: url("../../assets/images/exercise-image-sprites.png") no-repeat;
+                }
+                .addIcon {
+                    width: 17px;
+                    height: 17px;
+                    display: inline-block; 
+                    background-position: 0px 0px;
+                }
+                
+                .deleteIcon{
+                    width: 17px;
+                    height: 16px;
+                    display: inline-block; 
+                    background-position: -16px 0px;
+                }
+            }
+        }
+    }
+    
+}
+
+
